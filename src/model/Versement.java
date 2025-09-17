@@ -1,18 +1,18 @@
 package model;
 
-public class Versement extends Operation {
-    private String destination;
+public class Versement extends Operation{
+    private String source;
 
-    public Versement(String numero, double montant, String destination ) {
+    public Versement(String numero, double montant, String source) {
         super(numero, montant);
-        this.destination = destination;
+        this.source = source;
     }
 
-    public String getDestination() {
-        return destination;
+    public void setSource(String source) {
+        this.source = source;
     }
 
-    public void setDestination(String destination) {
-        this.destination = destination;
+    public String getSource() {
+        return source;
     }
 }

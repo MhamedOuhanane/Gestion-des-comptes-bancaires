@@ -1,18 +1,18 @@
 package model;
 
-public class Retrait extends Operation{
-    private String source;
+public class Retrait extends Operation {
+    private String destination;
 
-    public Retrait(String numero, double montant, String source) {
+    public Retrait(String numero, double montant, String destination ) {
         super(numero, montant);
-        this.source = source;
+        this.destination = destination;
     }
 
-    public void setSource(String source) {
-        this.source = source;
+    public String getDestination() {
+        return destination;
     }
 
-    public String getSource() {
-        return source;
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
 }
