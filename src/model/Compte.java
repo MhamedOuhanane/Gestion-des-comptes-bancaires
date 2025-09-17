@@ -8,6 +8,7 @@ public abstract class Compte {
     protected String code;
     protected double solde;
 
+
     public Compte(double solde, String code) {
         this.code = code;
         this.solde = solde;
