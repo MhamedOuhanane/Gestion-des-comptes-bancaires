@@ -1,10 +1,10 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 public abstract class Compte {
-    protected List<Operation> listeOperations;
+    protected ArrayList<Operation> listeOperations;
     protected String code;
     protected double solde;
 
@@ -12,7 +12,7 @@ public abstract class Compte {
     public Compte(double solde, String code) {
         this.code = code;
         this.solde = solde;
-        this.listeOperations = new ArrayList<>();
+        this.listeOperations = new ArrayList<Operation>();
     }
 
     public void setSolde(double solde) {
@@ -31,7 +31,7 @@ public abstract class Compte {
         this.listeOperations.add(op);
     }
 
-    public List<Operation> getListeOperations() {
+    public ArrayList<Operation> getListeOperations() {
         return listeOperations;
     }
 
