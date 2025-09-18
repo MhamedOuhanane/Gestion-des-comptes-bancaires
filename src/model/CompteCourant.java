@@ -28,12 +28,14 @@ public class CompteCourant extends Compte {
     }
 
     @Override
-    public void retirer(double montant) {
+    public boolean retirer(double montant) {
         if (this.solde - montant >= -decouvert) {
             this.solde -= montant;
             System.out.println("Retrait de " + montant + " effectué.");
+            return true;
         } else {
             System.out.println("Retrait refusé : dépassement du découvert.");
+            return false;
         }
     }
 

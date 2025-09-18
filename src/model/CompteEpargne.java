@@ -28,12 +28,14 @@ public class CompteEpargne extends Compte {
     }
 
     @Override
-    public void retirer(double montant) {
+    public boolean retirer(double montant) {
         if (this.solde - montant >= 0) {
             this.solde -= montant;
             System.out.println("Retrait de " + montant + " effectué.");
+            return true;
         } else {
             System.out.println("Retrait refusé : ce montant n'est pas sur votre compte.");
+            return false;
         }
     }
 }

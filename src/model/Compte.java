@@ -37,5 +37,5 @@ public abstract class Compte {
 
     public abstract void afficherDetails();
     public abstract double calculerInteret();
-    public abstract void retirer(double montant);
+    public abstract boolean retirer(double montant);
 }
