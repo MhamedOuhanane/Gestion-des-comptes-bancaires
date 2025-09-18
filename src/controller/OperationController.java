@@ -36,7 +36,7 @@ public class OperationController {
         double preMontant = compte.getSolde();
         compte.setSolde(preMontant + montant);
         compte.ajouterOperation(versement);
-        System.out.println("\nVersement a votre compte de " + montant + " effectué.");
+        System.out.println("\nVersement de " + montant + " effectué dans le compte " + compte.getCode() + " .");
     }
 
     public void faireRetrait(Compte compte,String destination) {

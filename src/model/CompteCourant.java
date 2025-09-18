@@ -31,7 +31,7 @@ public class CompteCourant extends Compte {
     public boolean retirer(double montant) {
         if (this.solde - montant >= -decouvert) {
             this.solde -= montant;
-            System.out.println("Retrait de " + montant + " effectué.");
+            System.out.println("Retrait de " + montant + " effectué du compte " + this.code + " .");
             return true;
         } else {
             System.out.println("Retrait refusé : dépassement du découvert.");

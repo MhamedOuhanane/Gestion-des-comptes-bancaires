@@ -31,7 +31,7 @@ public class CompteEpargne extends Compte {
     public boolean retirer(double montant) {
         if (this.solde - montant >= 0) {
             this.solde -= montant;
-            System.out.println("Retrait de " + montant + " effectué.");
+            System.out.println("Retrait de " + montant + " effectué du compte " + this.code + " .");
             return true;
         } else {
             System.out.println("Retrait refusé : ce montant n'est pas sur votre compte.");
