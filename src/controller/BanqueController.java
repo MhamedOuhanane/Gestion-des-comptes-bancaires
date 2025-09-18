@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 public class BanqueController {
     private Client client;
-    private Compte compte;
 
     public BanqueController(Client client) {
         this.client = client;
@@ -21,6 +20,7 @@ public class BanqueController {
         CompteController compteController = new CompteController(client, compteService);
         OperationController operationController = new OperationController();
         Scanner scanner = new Scanner(System.in);
+        Compte compte;
         boolean connexion = true;
 
         while (connexion) {
@@ -40,17 +40,17 @@ public class BanqueController {
                 case 1:
                     compteController.createCompte();
                     break;
-
                 case 2:
                     System.out.print("Connectez-vous à votre compte: ");
+                    scanner.nextLine();
                     String codeCompte = scanner.nextLine();
-                    while (this.compte != null) {
-                        try {
-                            this.compte = this.client.findCompte(codeCompte);
-                        } catch (Exception exception) {
-                            System.out.println("Quelque chose s'est mal passé. " + exception.getMessage());
-                            break;
-                        }
+                    System.out.println(codeCompte);
+                    try {
+                        compte = this.client.findCompte(codeCompte);
+                        operationController.faireVersement(compte, null);
+                        this.client.affichierAccountes();
+                    } catch (Exception exception) {
+                        System.out.println("Quelque chose s'est mal passé. " + exception.getMessage());
                     }
                     break;
                 default:

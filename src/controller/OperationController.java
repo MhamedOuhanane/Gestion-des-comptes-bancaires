@@ -7,9 +7,8 @@ import java.util.Scanner;
 import java.util.UUID;
 
 public class OperationController {
-    public Compte compte;
 
-    public void faireVersement(String source) {
+    public void faireVersement(Compte compte,String source) {
         Scanner scanner = new Scanner(System.in);
         if (source == null){
             System.out.println("Donner Source: ");
@@ -33,8 +32,9 @@ public class OperationController {
         System.out.print("Saisir le montant: ");
         double montant = scanner.nextDouble();
         Versement versement = new Versement(numero, montant, source);
-        double preMontant = this.compte.getSolde();
-        this.compte.setSolde(preMontant + montant);
-        this.compte.ajouterOperation(versement);
+        double preMontant = compte.getSolde();
+        compte.setSolde(preMontant + montant);
+        compte.ajouterOperation(versement);
+        System.out.println("\nVersement a votre compte de " + montant + " effectué.");
     }
 }
