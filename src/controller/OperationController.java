@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public class OperationController {
 
-    public void faireVersement(Compte compte,String source) {
+    public void faireVersement(Compte compte,double montant, String source) {
         Scanner scanner = new Scanner(System.in);
         if (source == null){
             System.out.println("Donner Source: ");
@@ -30,8 +30,6 @@ public class OperationController {
             }
         }
         UUID numero = UUID.randomUUID();
-        System.out.print("Saisir le montant: ");
-        double montant = scanner.nextDouble();
         Versement versement = new Versement(numero, montant, source);
         double preMontant = compte.getSolde();
         compte.setSolde(preMontant + montant);
@@ -39,7 +37,7 @@ public class OperationController {
         System.out.println("\nVersement de " + montant + " effectué dans le compte " + compte.getCode() + " .");
     }
 
-    public void faireRetrait(Compte compte,String destination) {
+    public void faireRetrait(Compte compte, double montant, String destination) {
         Scanner scanner = new Scanner(System.in);
         if (destination == null){
             System.out.println("Donner Destination: ");
@@ -60,8 +58,6 @@ public class OperationController {
             }
         }
         UUID numero = UUID.randomUUID();
-        System.out.print("Saisir le montant: ");
-        double montant = scanner.nextDouble();
         boolean effectRetrait = compte.retirer(montant);
 
         if (effectRetrait) {
@@ -69,5 +65,4 @@ public class OperationController {
             compte.ajouterOperation(retrait);
         }
     }
-
 }

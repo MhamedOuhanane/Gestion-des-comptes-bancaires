@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class Compte {
-    protected ArrayList<Operation> listeOperations;
+    private ArrayList<Operation> listeOperations;
     protected String code;
     protected double solde;
 
