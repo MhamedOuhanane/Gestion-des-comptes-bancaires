@@ -112,6 +112,22 @@ public class BanqueController {
                         System.out.println("Quelque chose s'est mal passé. " + exception.getMessage());
                     }
                     break;
+
+                case 6:
+                    System.out.print("Connectez-vous à votre compte: ");
+                    scanner.nextLine();
+                    String codeCompte = scanner.nextLine();
+                    try {
+                        compte = this.client.findCompte(codeCompte);
+                        ArrayList<Operation> listeOperations = compte.getListeOperations();
+                        System.out.println("===== La liste des opérations de votre compte " + codeCompte + " sont: ");
+                        for (Operation operation : listeOperations) {
+                            operation.afficherDetails();
+                        }
+                    } catch (Exception exception) {
+                        System.out.println("Quelque chose s'est mal passé. " + exception.getMessage());
+                    }
+                    break;
                 default:
                     System.out.println("Choix invalide !");
 
