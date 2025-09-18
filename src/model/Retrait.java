@@ -1,9 +1,11 @@
 package model;
 
+import java.util.UUID;
+
 public class Retrait extends Operation {
     private String destination;
 
-    public Retrait(String numero, double montant, String destination ) {
+    public Retrait(UUID numero, double montant, String destination ) {
         super(numero, montant);
         this.destination = destination;
     }

@@ -1,9 +1,11 @@
 package model;
 
+import java.util.UUID;
+
 public class Versement extends Operation{
     private String source;
 
-    public Versement(String numero, double montant, String source) {
+    public Versement(UUID numero, double montant, String source) {
         super(numero, montant);
         this.source = source;
     }

@@ -1,13 +1,14 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 public abstract class Operation {
-    protected String numero;
+    protected UUID numero;
     protected LocalDate date;
     protected double montant;
 
-    public Operation(String numero, double montant) {
+    public Operation(UUID numero, double montant) {
         this.numero = numero;
         this.date = LocalDate.now();
         this.montant = montant;
@@ -17,7 +18,7 @@ public abstract class Operation {
         this.date = date;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(UUID numero) {
         this.numero = numero;
     }
 
@@ -25,7 +26,7 @@ public abstract class Operation {
         this.montant = montant;
     }
 
-    public String getNumero() {
+    public UUID getNumero() {
         return numero;
     }
 
