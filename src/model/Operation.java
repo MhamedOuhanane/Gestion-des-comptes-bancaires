@@ -38,4 +38,6 @@ public abstract class Operation {
         return date;
     }
 
+    public abstract void afficherDetails();
+
 }

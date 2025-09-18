@@ -17,4 +17,14 @@ public class Retrait extends Operation {
     public void setDestination(String destination) {
         this.destination = destination;
     }
+
+    @Override
+    public void afficherDetails() {
+        System.out.println(
+                "Operation numero " + this.numero +
+                " | Date: " + this.date +
+                " | Montant: " + this.montant  +
+                " | Destination: " + this.destination + " |"
+        );
+    }
 }

@@ -17,4 +17,14 @@ public class Versement extends Operation{
     public String getSource() {
         return source;
     }
+
+    @Override
+    public void afficherDetails() {
+        System.out.println(
+                "Operation numero " + this.numero +
+                        " | Date: " + this.date +
+                        " | Montant: " + this.montant  +
+                        " | Source : " + this.source + " |"
+        );
+    }
 }
