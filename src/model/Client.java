@@ -16,14 +16,9 @@ public class Client {
         return accountes;
     }
 
-    public Compte findCompte(String code) {
-        try {
-            if (accountes.containsKey("code")) return accountes.get(code);
-            else throw new IllegalAccessException("Ce compte n'existe pas");
-        } catch (Exception exception) {
-            System.out.println("Quelque chose s'est mal passé. " + exception.getMessage());
-        }
-        return null;
+    public Compte findCompte(String code) throws IllegalAccessException {
+        if (accountes.containsKey(code)) return accountes.get(code);
+        else throw new IllegalAccessException("Ce compte n'existe pas");
     }
 
     public void affichierAccountes() {

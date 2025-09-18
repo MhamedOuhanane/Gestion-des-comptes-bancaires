@@ -39,6 +39,14 @@ public class CompteController {
                     String code1 = this.compteService.genererCodeCompte();
                     CompteCourant compteCourant = new CompteCourant(solde1, code1);
                     this.compteService.createCompte(compteCourant);
+                    try {
+                        Compte compte = this.client.findCompte(code1);
+                        System.out.println("Les informations de votre Compte sont:");
+                        compte.afficherDetails();
+                    } catch (Exception exception) {
+                        System.out.println("Quelque chose s'est mal passé. " + exception.getMessage());
+                        break;
+                    }
 
                     System.out.println("4. Termine");
                     System.out.print("Choix : ");
@@ -52,7 +60,14 @@ public class CompteController {
                     String code2 = this.compteService.genererCodeCompte();
                     CompteEpargne compteEpargne = new CompteEpargne(solde2, code2);
                     this.compteService.createCompte(compteEpargne);
-
+                    try {
+                        Compte compte = this.client.findCompte(code2);
+                        System.out.println("Les informations de votre Compte sont:");
+                        compte.afficherDetails();
+                    } catch (Exception exception) {
+                        System.out.println("Quelque chose s'est mal passé. " + exception.getMessage());
+                        break;
+                    }
 
                     System.out.println("4. Termine");
                     System.out.print("Choix : ");
