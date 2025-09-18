@@ -28,7 +28,7 @@ public class BanqueController {
             System.out.println("1. Créer un compte");
             System.out.println("2. Effectuer un versement");
             System.out.println("3. Effectuer un retrait");
-            System.out.println("4. Effectuer un virement entre comptes");
+            System.out.println("4. Effectuer un virement");
             System.out.println("5. Consulter solde d’un compte");
             System.out.println("6. Consulter les opérations d’un compte");
             System.out.println("7. Quitter");
@@ -43,16 +43,30 @@ public class BanqueController {
                 case 2:
                     System.out.print("Connectez-vous à votre compte: ");
                     scanner.nextLine();
-                    String codeCompte = scanner.nextLine();
-                    System.out.println(codeCompte);
+                    String codeCompteVer = scanner.nextLine();
                     try {
-                        compte = this.client.findCompte(codeCompte);
+                        compte = this.client.findCompte(codeCompteVer);
                         operationController.faireVersement(compte, null);
                         this.client.affichierAccountes();
                     } catch (Exception exception) {
                         System.out.println("Quelque chose s'est mal passé. " + exception.getMessage());
                     }
                     break;
+
+                case 3:
+                    System.out.print("Connectez-vous à votre compte: ");
+                    scanner.nextLine();
+                    String codeCompteRe = scanner.nextLine();
+                    try {
+                        compte = this.client.findCompte(codeCompteRe);
+                        operationController.faireRetrait(compte, null);
+                        this.client.affichierAccountes();
+                    } catch (Exception exception) {
+                        System.out.println("Quelque chose s'est mal passé. " + exception.getMessage());
+                    }
+                    break;
+
+
                 default:
                     System.out.println("Choix invalide !");
 
