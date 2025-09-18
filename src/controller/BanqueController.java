@@ -44,11 +44,13 @@ public class BanqueController {
                 case 2:
                     System.out.print("Connectez-vous à votre compte: ");
                     String codeCompte = scanner.nextLine();
-                    try {
-                        this.compte = this.client.findCompte(codeCompte);
-                    } catch (Exception exception) {
-                        System.out.println("Quelque chose s'est mal passé. " + exception.getMessage());
-                        break;
+                    while (this.compte != null) {
+                        try {
+                            this.compte = this.client.findCompte(codeCompte);
+                        } catch (Exception exception) {
+                            System.out.println("Quelque chose s'est mal passé. " + exception.getMessage());
+                            break;
+                        }
                     }
                     break;
                 default:
