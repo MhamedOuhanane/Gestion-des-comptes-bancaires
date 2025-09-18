@@ -5,7 +5,7 @@ import java.util.Random;
 public class CompteEpargne extends Compte {
     private double tauxInteret;
 
-    public CompteEpargne(double solde, String code, double tauxInteret) {
+    public CompteEpargne(double solde, String code) {
         super(solde, code);
         this.tauxInteret = genererTauxInterer(1, 5);
     }
@@ -19,7 +19,7 @@ public class CompteEpargne extends Compte {
 
     @Override
     public void afficherDetails() {
-        System.out.println("Compte Eparge " + this.code + " | Solde: " + this.solde + " | Le taux D'Interet: " + this.tauxInteret);
+        System.out.println("Compte Epargne " + this.code + " | Solde: " + this.solde + " | Le taux D'Interet: " + this.tauxInteret);
     }
 
     @Override

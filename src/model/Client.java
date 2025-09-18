@@ -5,12 +5,11 @@ import java.util.HashMap;
 public class Client {
     private static HashMap<String, Compte> accountes = new HashMap<String, Compte>();
 
-    public void ajouterCompte(Compte compte) {
-        try {
+    public void ajouterCompte(Compte compte) throws IllegalAccessException {
+        if (!accountes.containsKey(compte.getCode())) {
             accountes.put(compte.getCode(), compte);
-        } catch (Exception exception) {
-            System.out.println("Quelque chose s'est mal passé. " + exception.getMessage());
-        }
+            System.out.println("\nLe compte est enregitré avec success");
+        } else throw new IllegalAccessException("Erreur lors de la création du compte");
     }
 
     public HashMap<String, Compte> getComptes() {
@@ -19,7 +18,8 @@ public class Client {
 
     public Compte findCompte(String code) {
         try {
-            return accountes.get(code);
+            if (accountes.containsKey("code")) return accountes.get(code);
+            else throw new IllegalAccessException("Ce compte n'existe pas");
         } catch (Exception exception) {
             System.out.println("Quelque chose s'est mal passé. " + exception.getMessage());
         }
