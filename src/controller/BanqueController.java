@@ -8,6 +8,7 @@ import util.Validation;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class BanqueController {
     private final Client client;
@@ -84,6 +85,7 @@ public class BanqueController {
                     String codeCompteVir2 = Validation.getCodeValidation();
 
                     try {
+                        if (Objects.equals(codeCompteVir2, codeCompteVir1)) throw new IllegalAccessException("Vous ne pouvez pas transférer vers le même compte.");
                         compteVer = this.client.findCompte(codeCompteVir2);
                     } catch (Exception exception) {
                         System.out.println("Quelque chose s'est mal passé. " + exception.getMessage());
@@ -92,8 +94,8 @@ public class BanqueController {
 
                     System.out.print("Saisir le montant de Virement: ");
                     double montant = Validation.getMontantInput();
-                    operationController.faireRetrait(compte, montant, "Virement sortant");
-                    operationController.faireVersement(compteVer, montant, "Virement externe");
+                    boolean retraitCon = operationController.faireRetrait(compte, montant, "Virement sortant");
+                    if (retraitCon) operationController.faireVersement(compteVer, montant, "Virement externe");
                     this.client.affichierAccountes();
                     break;
 

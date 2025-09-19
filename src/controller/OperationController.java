@@ -36,7 +36,7 @@ public class OperationController {
         System.out.println("\nVersement de " + montant + " effectué dans le compte " + compte.getCode() + " .");
     }
 
-    public void faireRetrait(Compte compte, double montant, String destination) {
+    public boolean faireRetrait(Compte compte, double montant, String destination) {
         if (destination == null){
             System.out.println("Donner Destination: ");
             System.out.println("1. Distributeur ATM");
@@ -52,7 +52,7 @@ public class OperationController {
                     break;
                 default:
                     System.out.println("\nProblème lors du retrait, réessayez plus tard");
-                    return;
+                    return false;
             }
         }
         UUID numero = UUID.randomUUID();
@@ -62,5 +62,7 @@ public class OperationController {
             Retrait retrait = new Retrait(numero, montant, destination);
             compte.ajouterOperation(retrait);
         }
+
+        return effectRetrait;
     }
 }
