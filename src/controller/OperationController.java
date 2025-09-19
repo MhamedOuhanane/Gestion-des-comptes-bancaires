@@ -17,6 +17,7 @@ public class OperationController {
             System.out.println("2. Salaire");
             System.out.print("Choix: ");
             int choix = scanner.nextInt();
+            scanner.nextLine();
             switch (choix) {
                 case 1:
                     source = "Dépôt espèces";
@@ -45,6 +46,7 @@ public class OperationController {
             System.out.println("2. Chèque");
             System.out.print("Choix: ");
             int choix = scanner.nextInt();
+            scanner.nextLine();
             switch (choix) {
                 case 1:
                     destination = "Dépôt espèces";

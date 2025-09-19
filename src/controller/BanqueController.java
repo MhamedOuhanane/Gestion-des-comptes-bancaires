@@ -37,6 +37,7 @@ public class BanqueController {
             System.out.print("Choix : ");
 
             int choix = scanner.nextInt();
+            scanner.nextLine();
 
             switch (choix) {
                 case 1:
@@ -44,12 +45,12 @@ public class BanqueController {
                     break;
                 case 2:
                     System.out.print("Connectez-vous à votre compte: ");
-                    scanner.nextLine();
                     String codeCompteVer = scanner.nextLine();
                     try {
                         compte = this.client.findCompte(codeCompteVer);
                         System.out.print("Saisir le montant de Versement: ");
                         double montant = scanner.nextDouble();
+                        scanner.nextLine();
                         operationController.faireVersement(compte, montant, null);
                         this.client.affichierAccountes();
                     } catch (Exception exception) {
@@ -59,12 +60,12 @@ public class BanqueController {
 
                 case 3:
                     System.out.print("Connectez-vous à votre compte: ");
-                    scanner.nextLine();
                     String codeCompteRe = scanner.nextLine();
                     try {
                         compte = this.client.findCompte(codeCompteRe);
                         System.out.print("Saisir le montant de Retrait: ");
                         double montant = scanner.nextDouble();
+                        scanner.nextLine();
                         operationController.faireRetrait(compte, montant, null);
                         this.client.affichierAccountes();
                     } catch (Exception exception) {
@@ -74,7 +75,6 @@ public class BanqueController {
 
                 case 4:
                     System.out.print("Connectez-vous à votre compte: ");
-                    scanner.nextLine();
                     String codeCompteVir1 = scanner.nextLine();
                     try {
                         compte = this.client.findCompte(codeCompteVir1);
@@ -96,14 +96,14 @@ public class BanqueController {
 
                     System.out.print("Saisir le montant de Virement: ");
                     double montant = scanner.nextDouble();
-                    operationController.faireRetrait(compte, montant, "Virement retirer");
-                    operationController.faireVersement(compteVer, montant, "Virement versement");
+                    scanner.nextLine();
+                    operationController.faireRetrait(compte, montant, "Virement sortant");
+                    operationController.faireVersement(compteVer, montant, "Virement externe");
                     this.client.affichierAccountes();
                     break;
 
                 case 5:
                     System.out.print("Connectez-vous à votre compte: ");
-                    scanner.nextLine();
                     String codeCompteDet = scanner.nextLine();
                     try {
                         compte = this.client.findCompte(codeCompteDet);
@@ -115,7 +115,6 @@ public class BanqueController {
 
                 case 6:
                     System.out.print("Connectez-vous à votre compte: ");
-                    scanner.nextLine();
                     String codeCompte = scanner.nextLine();
                     try {
                         compte = this.client.findCompte(codeCompte);

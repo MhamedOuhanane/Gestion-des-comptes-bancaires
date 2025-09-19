@@ -31,11 +31,13 @@ public class CompteController {
             System.out.print("Choix : ");
 
             int choix = scanner.nextInt();
+            scanner.nextLine();
 
             switch (choix) {
                 case 1:
                     System.out.print("\nSaisir solde qui va entrer: ");
                     double solde1 = scanner.nextDouble();
+                    scanner.nextLine();
                     String code1 = this.compteService.genererCodeCompte();
                     CompteCourant compteCourant = new CompteCourant(solde1, code1);
                     this.compteService.createCompte(compteCourant);
@@ -51,12 +53,14 @@ public class CompteController {
                     System.out.println("4. Termine");
                     System.out.print("Choix : ");
                     int choix2 = scanner.nextInt();
+                    scanner.nextLine();
                     if (choix2 == 4) condition = false;
                     break;
 
                 case 2:
                     System.out.print("\nSaisir solde qui va entrer: ");
                     double solde2 = scanner.nextDouble();
+                    scanner.nextLine();
                     String code2 = this.compteService.genererCodeCompte();
                     CompteEpargne compteEpargne = new CompteEpargne(solde2, code2);
                     this.compteService.createCompte(compteEpargne);
@@ -72,6 +76,7 @@ public class CompteController {
                     System.out.println("4. Termine");
                     System.out.print("Choix : ");
                     int choix3 = scanner.nextInt();
+                    scanner.nextLine();
                     if (choix3 == 4) condition = false;
                     break;
 
