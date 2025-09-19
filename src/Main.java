@@ -24,10 +24,6 @@ public class Main {
             }
         }, 0, 5, TimeUnit.SECONDS);
 
-        System.out.println("Code: ");
-        String code = Validation.getCodeValidation();
-        if (code == null) System.out.println("ff");
-        else System.out.println(code);
         BanqueController banqueController = new BanqueController(client);
         banqueController.menuGeneral();
 
