@@ -7,6 +7,7 @@ import service.CompteService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class BanqueController {
@@ -26,18 +27,15 @@ public class BanqueController {
         boolean connexion = true;
 
         while (connexion) {
-            System.out.println("\n===== MENU BANQUE =====");
-            System.out.println("1. Créer un compte");
-            System.out.println("2. Effectuer un versement");
-            System.out.println("3. Effectuer un retrait");
-            System.out.println("4. Effectuer un virement");
-            System.out.println("5. Consulter solde d’un compte");
-            System.out.println("6. Consulter les opérations d’un compte");
-            System.out.println("7. Quitter");
-            System.out.print("Choix : ");
 
-            int choix = scanner.nextInt();
-            scanner.nextLine();
+            int choix;
+            try {
+                choix = scanner.nextInt();
+                scanner.nextLine();
+            } catch (InputMismatchException exc) {
+                System.out.println("Erreur dans le type d'entrée du ton choix, S'il veut plais nchoix l'un des choix donner");
+                choix = 7;
+            }
 
             switch (choix) {
                 case 1:
@@ -126,6 +124,10 @@ public class BanqueController {
                     } catch (Exception exception) {
                         System.out.println("Quelque chose s'est mal passé. " + exception.getMessage());
                     }
+                    break;
+
+                case 7:
+                    connexion = false;
                     break;
                 default:
                     System.out.println("Choix invalide !");
