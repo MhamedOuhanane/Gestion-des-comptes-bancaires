@@ -1,20 +1,21 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public abstract class Operation {
     protected UUID numero;
-    protected LocalDate date;
+    protected LocalDateTime date;
     protected double montant;
 
     public Operation(UUID numero, double montant) {
         this.numero = numero;
-        this.date = LocalDate.now();
+        this.date = LocalDateTime.now();
         this.montant = montant;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
@@ -34,7 +35,7 @@ public abstract class Operation {
         return montant;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 

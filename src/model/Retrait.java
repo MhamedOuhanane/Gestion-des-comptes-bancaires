@@ -1,5 +1,6 @@
 package model;
 
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 public class Retrait extends Operation {
@@ -22,7 +23,7 @@ public class Retrait extends Operation {
     public void afficherDetails() {
         System.out.println(
                 "Operation numero " + this.numero +
-                " | Date: " + this.date +
+                " | Date: " + this.date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")) +
                 " | Montant: " + this.montant  +
                 " | Destination: " + this.destination + " |"
         );
