@@ -56,7 +56,12 @@ L’objectif est d’automatiser la gestion des comptes (courant et épargne) ai
 
 ## Conception :
 - Diagramme de classe :
-![Diagrame de class](UML/Diagrame%20de%20class.jpg)
+  ![Diagrame de class](UML/Diagrame%20de%20class.jpg)
+
+## Captures d’écran :
+| ![Captur1](CapturesEcran/Capture%20d'écran%201.png) | ![Captur2](CapturesEcran/Capture%20d'écran%202.png) |
+|------------------------------------------------|------------------------------------------------|
+| ![Captur3](CapturesEcran/Capture%20d'écran%203.png) | ![Captur4](CapturesEcran/Capture%20d'écran%204.png) |
 
 ## ▶️ Exécution
 
