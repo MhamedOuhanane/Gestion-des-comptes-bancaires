@@ -51,7 +51,7 @@ public abstract class Validation {
                 codeCompte = null;
                 System.out.println("Erreur dans le code entrée: " + exc.getMessage());
             }
-            if (codeCompte == null) System.out.print("Ré-entrez le code de votre conte: ");
+            if (codeCompte == null) System.out.print("Ré-entrez le code de votre compte: ");
         }
 
         return codeCompte;

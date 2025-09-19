@@ -2,13 +2,11 @@ import controller.BanqueController;
 import model.Client;
 import model.Compte;
 import model.CompteEpargne;
-import util.Validation;
 
 import java.util.HashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) {

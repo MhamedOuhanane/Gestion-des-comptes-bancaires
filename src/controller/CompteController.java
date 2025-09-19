@@ -5,14 +5,12 @@ import model.Compte;
 import model.CompteCourant;
 import model.CompteEpargne;
 import service.CompteService;
-
-import java.util.HashMap;
-import java.util.Scanner;
+import util.Validation;
 
 
 public class CompteController {
-    private CompteService compteService;
-    private Client client;
+    private final CompteService compteService;
+    private final Client client;
 
     public CompteController(Client client, CompteService compteService) {
         this.compteService = compteService;
@@ -20,7 +18,6 @@ public class CompteController {
     }
 
     public void createCompte() {
-        Scanner scanner = new Scanner(System.in);
         boolean condition = true;
 
         while (condition) {
@@ -30,14 +27,12 @@ public class CompteController {
             System.out.println("3. Retour");
             System.out.print("Choix : ");
 
-            int choix = scanner.nextInt();
-            scanner.nextLine();
+            int choix = Validation.getIntegerInput();
 
             switch (choix) {
                 case 1:
                     System.out.print("\nSaisir solde qui va entrer: ");
-                    double solde1 = scanner.nextDouble();
-                    scanner.nextLine();
+                    double solde1 = Validation.getMontantInput();
                     String code1 = this.compteService.genererCodeCompte();
                     CompteCourant compteCourant = new CompteCourant(solde1, code1);
                     this.compteService.createCompte(compteCourant);
@@ -52,15 +47,13 @@ public class CompteController {
 
                     System.out.println("4. Termine");
                     System.out.print("Choix : ");
-                    int choix2 = scanner.nextInt();
-                    scanner.nextLine();
+                    int choix2 = Validation.getIntegerInput();
                     if (choix2 == 4) condition = false;
                     break;
 
                 case 2:
                     System.out.print("\nSaisir solde qui va entrer: ");
-                    double solde2 = scanner.nextDouble();
-                    scanner.nextLine();
+                    double solde2 = Validation.getMontantInput();
                     String code2 = this.compteService.genererCodeCompte();
                     CompteEpargne compteEpargne = new CompteEpargne(solde2, code2);
                     this.compteService.createCompte(compteEpargne);
@@ -75,8 +68,7 @@ public class CompteController {
 
                     System.out.println("4. Termine");
                     System.out.print("Choix : ");
-                    int choix3 = scanner.nextInt();
-                    scanner.nextLine();
+                    int choix3 = Validation.getIntegerInput();
                     if (choix3 == 4) condition = false;
                     break;
 

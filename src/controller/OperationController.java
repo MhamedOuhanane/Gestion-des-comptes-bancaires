@@ -3,21 +3,19 @@ package controller;
 import model.Compte;
 import model.Retrait;
 import model.Versement;
+import util.Validation;
 
-import java.util.Scanner;
 import java.util.UUID;
 
 public class OperationController {
 
     public void faireVersement(Compte compte,double montant, String source) {
-        Scanner scanner = new Scanner(System.in);
         if (source == null){
             System.out.println("Donner Source: ");
             System.out.println("1. Dépôt espèces");
             System.out.println("2. Salaire");
             System.out.print("Choix: ");
-            int choix = scanner.nextInt();
-            scanner.nextLine();
+            int choix = Validation.getIntegerInput();
             switch (choix) {
                 case 1:
                     source = "Dépôt espèces";
@@ -39,14 +37,12 @@ public class OperationController {
     }
 
     public void faireRetrait(Compte compte, double montant, String destination) {
-        Scanner scanner = new Scanner(System.in);
         if (destination == null){
             System.out.println("Donner Destination: ");
             System.out.println("1. Distributeur ATM");
             System.out.println("2. Chèque");
             System.out.print("Choix: ");
-            int choix = scanner.nextInt();
-            scanner.nextLine();
+            int choix = Validation.getIntegerInput();
             switch (choix) {
                 case 1:
                     destination = "Dépôt espèces";

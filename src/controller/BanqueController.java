@@ -8,11 +8,9 @@ import util.Validation;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class BanqueController {
-    private Client client;
+    private final Client client;
 
     public BanqueController(Client client) {
         this.client = client;
@@ -23,20 +21,21 @@ public class BanqueController {
         CompteService compteService = new CompteService(client);
         CompteController compteController = new CompteController(client, compteService);
         OperationController operationController = new OperationController();
-        Scanner scanner = new Scanner(System.in);
         Compte compte;
         boolean connexion = true;
 
         while (connexion) {
+            System.out.println("\n===== MENU BANQUE =====");
+            System.out.println("1. Créer un compte");
+            System.out.println("2. Effectuer un versement");
+            System.out.println("3. Effectuer un retrait");
+            System.out.println("4. Effectuer un virement");
+            System.out.println("5. Consulter solde d’un compte");
+            System.out.println("6. Consulter les opérations d’un compte");
+            System.out.println("7. Quitter");
+            System.out.print("Choix : ");
 
-            int choix;
-            try {
-                choix = scanner.nextInt();
-                scanner.nextLine();
-            } catch (InputMismatchException exc) {
-                System.out.println("Erreur dans le type d'entrée du ton choix, S'il veut plais nchoix l'un des choix donner");
-                choix = 7;
-            }
+            int choix = Validation.getIntegerInput();
 
             switch (choix) {
                 case 1:
@@ -44,12 +43,11 @@ public class BanqueController {
                     break;
                 case 2:
                     System.out.print("Connectez-vous à votre compte: ");
-                    String codeCompteVer = scanner.nextLine();
+                    String codeCompteVer = Validation.getCodeValidation();
                     try {
                         compte = this.client.findCompte(codeCompteVer);
                         System.out.print("Saisir le montant de Versement: ");
-                        double montant = scanner.nextDouble();
-                        scanner.nextLine();
+                        double montant = Validation.getMontantInput();
                         operationController.faireVersement(compte, montant, null);
                         this.client.affichierAccountes();
                     } catch (Exception exception) {
@@ -59,12 +57,11 @@ public class BanqueController {
 
                 case 3:
                     System.out.print("Connectez-vous à votre compte: ");
-                    String codeCompteRe = scanner.nextLine();
+                    String codeCompteRe = Validation.getCodeValidation();
                     try {
                         compte = this.client.findCompte(codeCompteRe);
                         System.out.print("Saisir le montant de Retrait: ");
-                        double montant = scanner.nextDouble();
-                        scanner.nextLine();
+                        double montant = Validation.getMontantInput();
                         operationController.faireRetrait(compte, montant, null);
                         this.client.affichierAccountes();
                     } catch (Exception exception) {
@@ -74,7 +71,7 @@ public class BanqueController {
 
                 case 4:
                     System.out.print("Connectez-vous à votre compte: ");
-                    String codeCompteVir1 = scanner.nextLine();
+                    String codeCompteVir1 = Validation.getCodeValidation();
                     try {
                         compte = this.client.findCompte(codeCompteVir1);
                     } catch (Exception exception) {
@@ -84,7 +81,7 @@ public class BanqueController {
 
                     Compte compteVer;
                     System.out.print("Donner le compte de Versement: ");
-                    String codeCompteVir2 = scanner.nextLine();
+                    String codeCompteVir2 = Validation.getCodeValidation();
 
                     try {
                         compteVer = this.client.findCompte(codeCompteVir2);
@@ -94,8 +91,7 @@ public class BanqueController {
                     }
 
                     System.out.print("Saisir le montant de Virement: ");
-                    double montant = scanner.nextDouble();
-                    scanner.nextLine();
+                    double montant = Validation.getMontantInput();
                     operationController.faireRetrait(compte, montant, "Virement sortant");
                     operationController.faireVersement(compteVer, montant, "Virement externe");
                     this.client.affichierAccountes();
@@ -103,7 +99,7 @@ public class BanqueController {
 
                 case 5:
                     System.out.print("Connectez-vous à votre compte: ");
-                    String codeCompteDet = scanner.nextLine();
+                    String codeCompteDet = Validation.getCodeValidation();
                     try {
                         compte = this.client.findCompte(codeCompteDet);
                         System.out.println("Solde du votre compte est: " + compte.getSolde());
@@ -114,7 +110,7 @@ public class BanqueController {
 
                 case 6:
                     System.out.print("Connectez-vous à votre compte: ");
-                    String codeCompte = scanner.nextLine();
+                    String codeCompte = Validation.getCodeValidation();
                     try {
                         compte = this.client.findCompte(codeCompte);
                         ArrayList<Operation> listeOperations = compte.getListeOperations();
@@ -135,7 +131,6 @@ public class BanqueController {
 
             }
 
-//            scanner.close();
         }
     }
 }
